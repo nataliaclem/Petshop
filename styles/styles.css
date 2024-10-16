@@ -1,0 +1,311 @@
+/* Resetando estilos padrões */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilos gerais */
+body {
+    background-color: #f1f1f1;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: #6b42a5;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Banner */
+.banner {
+    position: relative;
+    padding: 80px 20px;
+    text-align: center;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.banner h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    z-index: 2;
+}
+
+.banner p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    z-index: 2;
+}
+
+.carousel-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Botões de navegação do carrossel */
+.carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    z-index: 3;
+    border-radius: 50%;
+}
+
+.carousel-prev {
+    left: 10px;
+}
+
+.carousel-next {
+    right: 10px;
+}
+
+.carousel-prev:hover, .carousel-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Animais para adoção */
+.animais {
+    padding: 40px 20px;
+    background-color: #f9d877;
+    text-align: center;
+}
+
+.animais h2 {
+    color: #6b42a5;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.animais-lista {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.animal {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 280px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.animal:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.animal img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.animal h3 {
+    color: #6b42a5;
+    margin: 15px 0;
+}
+
+.animal p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.animal button {
+    background-color: #6b42a5;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+.animal button:hover {
+    background-color: #5a3794;
+}
+
+/* Footer */
+footer {
+    background-color: #6b42a5;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+footer a {
+    color: #f9d877;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+
+    /* Banner */
+    .banner {
+        padding: 40px 10px;
+        height: auto;
+    }
+
+    .banner h2 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+
+    .banner p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    /* Ajustando o carrossel */
+    .carousel {
+        max-width: 100%;
+    }
+
+    .carousel-prev, .carousel-next {
+        padding: 8px;
+        font-size: 1.5rem;
+    }
+
+    /* Animais para adoção */
+    .animais {
+        padding: 20px 10px;
+    }
+
+    .animais h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    .animais-lista {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .animal {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+
+    .animal img {
+        height: auto;
+    }
+
+    .animal h3 {
+        font-size: 1.4rem;
+    }
+
+    .animal p {
+        font-size: 0.9rem;
+    }
+
+    .animal button {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    /* Header */
+    header {
+        flex-direction: column;
+        padding: 15px;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    nav a {
+        font-size: 1rem;
+    }
+}
+
+/* Para telas ainda menores (até 480px) */
+@media (max-width: 480px) {
+    .banner h2 {
+        font-size: 1.5rem;
+    }
+
+    .banner p {
+        font-size: 0.9rem;
+    }
+
+    .carousel-prev, .carousel-next {
+        font-size: 1.2rem;
+    }
+
+    .animal h3 {
+        font-size: 1.2rem;
+    }
+
+    .animal p {
+        font-size: 0.8rem;
+    }
+
+    .animal button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
