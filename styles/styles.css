@@ -171,7 +171,6 @@ nav {
         top: 4.6vh;
         transform: translate(-5%, -50%);
         transition: all 0.7s ease;
-        z-index: 91;
     }
 
     /* Categorias do Menu no Celular */
@@ -182,10 +181,9 @@ nav {
         width: 100%;
         flex-direction: column;
         clip-path: circle(50px at 90% -20%);
-        -webkit-clip-path: circle(50px at 90% -10%);
+        -webkit-clip-path: circle(50px at 90% -20%); /* Adicione isto */
         transition: all 1s ease-out;
         pointer-events: none;
-        z-index: 90;
     }
 
     .nav-links li a {
@@ -194,7 +192,7 @@ nav {
 
     .nav-links.open {
         clip-path: circle(1000px at 90% -10%);
-        -webkit-clip-path: circle(1000px at 90% -10%);
+        -webkit-clip-path: circle(1000px at 90% -10%); /* Adicione isto */
         pointer-events: all;
     }
 
