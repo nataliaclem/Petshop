@@ -74,7 +74,6 @@ nav {
     text-transform: uppercase;
     margin: 0 auto;
     gap: 5vw;
-    z-index: 90;
 }
 
 .nav-links li a {
@@ -171,8 +170,8 @@ nav {
         right: 2.6vw;
         top: 4.6vh;
         transform: translate(-5%, -50%);
-        z-index: 91;
         transition: all 0.7s ease;
+        z-index: 91;
     }
 
     /* Categorias do Menu no Celular */
@@ -186,6 +185,7 @@ nav {
         -webkit-clip-path: circle(50px at 90% -10%);
         transition: all 1s ease-out;
         pointer-events: none;
+        z-index: 90;
     }
 
     .nav-links li a {
