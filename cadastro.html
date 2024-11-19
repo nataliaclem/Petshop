@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="styles/cadastro.css">
+</head>
+
+<body>
+    <!-- Modal de Cadastro -->
+    <div id="modal-cadastro" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Cadastro</h2>
+            <form id="form-cadastro">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="endereco" required>
+
+                <button type="submit">Finalizar Cadastro</button>
+            </form>
+        </div>
+
+        <script>
+            // Selecionar elementos
+            const modal = document.getElementById("modal-cadastro");
+            const closeBtn = document.querySelector(".close");
+            const comprarBotoes = document.querySelectorAll(".produto button");
+
+            // Abrir o modal ao clicar em "Comprar"
+            comprarBotoes.forEach(botao => {
+                botao.addEventListener("click", () => {
+                    modal.style.display = "block";
+                });
+            });
+
+            // Fechar o modal ao clicar no "x"
+            closeBtn.addEventListener("click", () => {
+                modal.style.display = "none";
+            });
+
+            // Fechar o modal ao clicar fora dele
+            window.addEventListener("click", (event) => {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+        </script>
+    </div>
+</body>
+
+</html>
