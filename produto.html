@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
-    <nav>
+     <!-- Header -->
+     <nav>
         <div class="logo">
             <img src="img/logotipo.png" alt="Logo Image">
         </div>
@@ -20,67 +20,78 @@
         </div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
+            <li><a href="cadastro.html">Cadastro</a></li>
             <li><a href="produto.html">Produtos</a></li>
+            <li><a href="carrinho.html">Carrinho</a></li>
             <li><a href="adote.html">Adote-me</a></li>
-            <li><a href="#">Cadastro</a></li>
-    
             
+           
             <li>
-                <a href="carrinho.html">
-                    <button class="carrinho-botao">
-                        <div class="carrinho-icone">
-                            <img src="img/carrinho.png" alt="Carrinho" class="carrinho-img">
+                <a href="">
+                    <button class="adotar-botao">
+                        <div class="adotar-icone">
+                            <i class="fa-solid fa-paw"></i>
                         </div>
-                        Carrinho
+                        Suas adoções
                     </button>
                 </a>
             </li>
         </ul>
     </nav>
-
-    <!-- Seção de Produtos -->
-   <!-- Seção de Produtos -->
-<section id="produtos" class="produtos">
-    <h2>Produtos para seu Pet</h2>
-    <div class="produtos-lista">
-        <!-- Coleiras para Gatos e Cachorros -->
-        <h3 class="titulo-categoria">Coleiras</h3>
-        <div class="produto">
-            <img src="https://images.unsplash.com/photo-1592194996308-7a4b2c0d71f9" alt="Coleira para Cachorro">
-            <h4>Coleira para Cachorro</h4>
-            <p>Coleira resistente para todos os portes.</p>
-            <button>Comprar</button>
+    
+    <section id="produtos" class="produtos">
+        <h2>Produtos para seu Pet</h2>
+        <div class="produtos-lista">
+            <!-- Coleiras para Gatos e Cachorros -->
+            <div class="produto">
+                <img src="https://a-static.mlcdn.com.br/1500x1500/coleira-para-cachorro-grande-e-forte-madog-comander-preto/madog/15648642708/218b1812b25e98a802b073cf50228b98.jpeg" alt="Coleira para Cachorro">
+                <h4>Coleira para Cachorro</h4>
+                <p>Coleira resistente para todos os portes.</p>
+                <div class="preco">
+                    <span>R$ 39,90</span>
+                </div>
+                <button>Comprar</button>
+            </div>
+            <div class="produto">
+                <img src="https://images.tcdn.com.br/img/img_prod/833378/coleira_personalizada_de_couro_para_gatos_kali_359_2_0a3c9679f9e0f175480bfb05e9857538.jpg" alt="Coleira para Gato">
+                <h4>Coleira para Gato</h4>
+                <p>Coleira leve e confortável para o seu gato.</p>
+                <div class="preco">
+                    <span>R$ 29,90</span>
+                </div>
+                <button>Comprar</button>
+            </div>
+    
+            <!-- Ração para Gatos, Cachorros e Coelhos -->
+            <div class="produto">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrWDhn7bSOxXlyqbyqtQFKJu8d8GfLXGnU0g&s" alt="Ração para Gatos">
+                <h4>Ração para Gatos</h4>
+                <p>Ração premium para todas as idades.</p>
+                <div class="preco">
+                    <span>R$ 79,90</span>
+                </div>
+                <button>Comprar</button>
+            </div>
+            <div class="produto">
+                <img src="https://m.media-amazon.com/images/I/512SRqPROXL._SL500_.jpg" alt="Ração para Cachorros">
+                <h4>Ração para Cachorros</h4>
+                <p>Ração nutritiva para o seu cachorro.</p>
+                <div class="preco">
+                    <span>R$ 99,90</span>
+                </div>
+                <button>Comprar</button>
+            </div>
+            <div class="produto">
+                <img src="https://img.br.my-best.com/product_images/086e38a0da4bd5252d0995d23d39ecb2.jpg?ixlib=rails-4.3.1&q=70&lossless=0&w=800&h=800&fit=clip&s=75f84569d8ff1c27df7f6a171dfd5665" alt="Ração para Coelhos">
+                <h4>Ração para Coelhos</h4>
+                <p>Ração ideal para o seu coelho.</p>
+                <div class="preco">
+                    <span>R$ 49,90</span>
+                </div>
+                <button>Comprar</button>
+            </div>
         </div>
-        <div class="produto">
-            <img src="https://images.unsplash.com/photo-1574964733763-d5b8d3e94a48" alt="Coleira para Gato">
-            <h4>Coleira para Gato</h4>
-            <p>Coleira leve e confortável para o seu gato.</p>
-            <button>Comprar</button>
-        </div>
-
-        <!-- Ração para Gatos, Cachorros e Coelhos -->
-        <h3 class="titulo-categoria">Ração</h3>
-        <div class="produto">
-            <img src="https://images.unsplash.com/photo-1559244587-e7f93eb7e2f2" alt="Ração para Gatos">
-            <h4>Ração para Gatos</h4>
-            <p>Ração premium para todas as idades.</p>
-            <button>Comprar</button>
-        </div>
-        <div class="produto">
-            <img src="https://images.unsplash.com/photo-1607640671472-8f19f6ef8cf3" alt="Ração para Cachorros">
-            <h4>Ração para Cachorros</h4>
-            <p>Ração nutritiva para o seu cachorro.</p>
-            <button>Comprar</button>
-        </div>
-        <div class="produto">
-            <img src="https://images.unsplash.com/photo-1513706114974-e48f31a9e2f2" alt="Ração para Coelhos">
-            <h4>Ração para Coelhos</h4>
-            <p>Ração ideal para o seu coelho.</p>
-            <button>Comprar</button>
-        </div>
-    </div>
-</section>
-
+    </section>
 
     <!-- Footer -->
     <footer id="contato">
