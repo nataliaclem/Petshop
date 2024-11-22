@@ -9,6 +9,7 @@ hamburger.addEventListener('click', () => {
     navLinks.classList.toggle("open");
     links.forEach(link => {
         link.classList.toggle("fade");
+        link.classList.toggle("show"); // Adiciona a classe para tornar visível
     });
 
     hamburger.classList.toggle("toggle");
@@ -31,6 +32,7 @@ document.addEventListener('click', (e) => {
 
         links.forEach(link => {
             link.classList.remove("fade");
+            link.classList.remove("show"); // Remove a classe para ocultar
         });
     }
 });
