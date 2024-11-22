@@ -41,12 +41,12 @@ nav {
     overflow-x: hidden;
 }
 
-.adotar-icone {
+.cadastro-icone {
     display: inline-block;
     margin-right: 0.4vw;
 }
 
-.adotar-icone img {
+.cadastro-icone img {
     width: 1.4vw;
 }
 
@@ -94,7 +94,7 @@ nav {
 }
 
 /* Botão do Carrinho */
-.adotar-botao {
+.cadastro-botao {
     color: var(--cor-texto-carrinho);
     background-color: var(--cor-fundo-carrinho);
     border: 1.5px solid var(--cor-fundo-carrinho);
@@ -107,7 +107,7 @@ nav {
     transition: all ease-in-out 350ms;
 }
 
-.adotar-botao:hover {
+.cadastro-botao:hover {
     color: var(--cor-texto-carrinho-hover);
     background-color: var(--cor-fundo-carrinho-hover);
     border: 1.5px solid var(--cor-fundo-carrinho-hover);
@@ -137,15 +137,15 @@ nav {
         z-index: 10;
     }
 
-    .adotar-botao {
+    .cadastro-botao {
         font-size: 5vw;
     }
 
-    .adotar-icone {
+    .cadastro-icone {
         margin-right: 1.8vw;
     }
 
-    .adotar-icone img {
+    .cadastro-icone img {
         width: 6vw;
     }
 
