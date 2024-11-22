@@ -93,7 +93,7 @@ nav {
     position: relative;
 }
 
-/* Botão do Carrinho */
+/* Botão do Cadastro*/
 .cadastro-botao {
     color: var(--cor-texto-carrinho);
     background-color: var(--cor-fundo-carrinho);
