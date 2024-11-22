@@ -603,3 +603,12 @@ footer a:hover {
         font-size: 0.9rem;
     }
 }
+
+.fade {
+    opacity: 0 !important; /* Itens invisíveis por padrão */
+    transition: opacity 0.3s ease-in-out !important; /* Transição suave */
+}
+
+.fade.show {
+    opacity: 1 !important; /* Torna visível quando a classe 'show' está presente */
+}

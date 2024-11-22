@@ -6,19 +6,25 @@ const navLinks = document.querySelector(".nav-links");
 const links = document.querySelectorAll(".nav-links li");
 
 hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle("open");
+    const isMenuOpen = navLinks.classList.toggle("open");
+
     links.forEach(link => {
-        link.classList.toggle("fade");
-        link.classList.toggle("show"); // Adiciona a classe para tornar visível
+        if (isMenuOpen) {
+            link.classList.add("fade"); // Adiciona a transição
+            setTimeout(() => {
+                link.classList.add("show"); // Adiciona a visibilidade com atraso
+            }, 100); // Tempo suficiente para acionar a transição
+        } else {
+            link.classList.remove("show"); // Remove visibilidade
+            setTimeout(() => {
+                link.classList.remove("fade"); // Remove a transição após fechar
+            }, 200); // Tempo correspondente à transição
+        }
     });
 
     hamburger.classList.toggle("toggle");
 
-    if (navLinks.classList.contains("open")) {
-        document.body.style.overflow = "hidden"; 
-    } else {
-        document.body.style.overflow = ""; 
-    }
+    document.body.style.overflow = isMenuOpen ? "hidden" : "";
 });
 
 document.addEventListener('click', (e) => {
@@ -26,14 +32,15 @@ document.addEventListener('click', (e) => {
         if (navLinks.classList.contains("open")) {
             navLinks.classList.remove("open");
             hamburger.classList.remove("toggle");
-
             document.body.style.overflow = "";
-        }
 
-        links.forEach(link => {
-            link.classList.remove("fade");
-            link.classList.remove("show"); // Remove a classe para ocultar
-        });
+            links.forEach(link => {
+                link.classList.remove("show");
+                setTimeout(() => {
+                    link.classList.remove("fade");
+                }, 300); // Tempo correspondente à transição
+            });
+        }
     }
 });
 
