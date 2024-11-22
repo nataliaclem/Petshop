@@ -1,6 +1,4 @@
 
-/* ---------------------------------------------------------------- */
-
 // Menu
 
 const hamburger = document.querySelector(".hamburger");
