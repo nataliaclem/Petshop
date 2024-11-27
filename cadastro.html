@@ -1,59 +1,108 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <title>Painel de Login</title>
     <link rel="stylesheet" href="styles/cadastro.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
-    <!-- Modal de Cadastro -->
-    <div id="modal-cadastro" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Cadastro</h2>
-            <form id="form-cadastro">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
-
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="endereco">Endereço:</label>
-                <input type="text" id="endereco" name="endereco" required>
-
-                <button type="submit">Finalizar Cadastro</button>
-            </form>
+    <body>
+        <div class="container">
+          <div class="forms-container">
+            <div class="signin-signup">
+              <form action="#" class="sign-in-form">
+                <h2 class="title">Acessar a Conta</h2>
+                <div class="input-field">
+                  <i class="fas fa-user"></i>
+                  <input type="text" placeholder="Usuário" />
+                </div>
+                <div class="input-field">
+                  <i class="fas fa-lock"></i>
+                  <input type="password" placeholder="Senha" />
+                </div>
+                <input type="submit" value="Login" class="btn solid" />
+                <p class="social-text">Fazer login com plataformas sociais</p>
+                <div class="social-media">
+                  <a href="#" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="#" class="social-icon">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                  <a href="#" class="social-icon">
+                    <i class="fab fa-google"></i>
+                  </a>
+                  <a href="#" class="social-icon">
+                    <i class="fab fa-linkedin-in"></i>
+                  </a>
+                </div>
+              </form>
+              <form action="#" class="sign-up-form">
+                <h2 class="title">Criar Conta</h2>
+                <div class="input-field">
+                  <i class="fas fa-user"></i>
+                  <input type="text" placeholder="Usuário" />
+                </div>
+                <div class="input-field">
+                  <i class="fas fa-envelope"></i>
+                  <input type="email" placeholder="Email" />
+                </div>
+                <div class="input-field">
+                  <i class="fas fa-lock"></i>
+                  <input type="password" placeholder="Senha" />
+                </div>
+                <input type="submit" class="btn" value="Criar Conta" />
+                <p class="social-text">Criar uma Conta com plataformas sociais</p>
+                <div class="social-media">
+                  <a href="#" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="#" class="social-icon">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                  <a href="#" class="social-icon">
+                    <i class="fab fa-google"></i>
+                  </a>
+                  <a href="#" class="social-icon">
+                    <i class="fab fa-linkedin-in"></i>
+                  </a>
+                </div>
+              </form>
+            </div>
+          </div>
+    
+          <div class="panels-container">
+            <div class="panel left-panel">
+              <div class="content">
+                <h3>Você é novo em nosso site?</h3>
+                <p>
+                Cadastre-se agora e ajude um animal a encontrar um novo lar
+                </p>
+                <button class="btn transparent" id="sign-up-btn">
+                  Criar Conta
+                </button>
+              </div>
+              <img src="img/log.svg" class="image" alt="" />
+            </div>
+            <div class="panel right-panel">
+              <div class="content">
+                <h3>Você já tem uma conta?</h3>
+                <p>
+                  Clique aqui e acesse a sua conta para acessar todas as funcionalidades do site
+                </p>
+                <button class="btn transparent" id="sign-in-btn">
+                  Fazer Login
+                </button>
+              </div>
+              <img src="img/register.svg" class="image" alt="" />
+            </div>
+          </div>
         </div>
-
-        <script>
-            // Selecionar elementos
-            const modal = document.getElementById("modal-cadastro");
-            const closeBtn = document.querySelector(".close");
-            const comprarBotoes = document.querySelectorAll(".produto button");
-
-            // Abrir o modal ao clicar em "Comprar"
-            comprarBotoes.forEach(botao => {
-                botao.addEventListener("click", () => {
-                    modal.style.display = "block";
-                });
-            });
-
-            // Fechar o modal ao clicar no "x"
-            closeBtn.addEventListener("click", () => {
-                modal.style.display = "none";
-            });
-
-            // Fechar o modal ao clicar fora dele
-            window.addEventListener("click", (event) => {
-                if (event.target === modal) {
-                    modal.style.display = "none";
-                }
-            });
-        </script>
-    </div>
+      </body>
+    
+      <script src="js/cadastro.js"></script>
 </body>
-
 </html>
