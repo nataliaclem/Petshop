@@ -275,6 +275,14 @@ form.sign-in-form {
     min-height: 800px;
     height: 100vh;
   }
+
+  .forms-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out; /* Defina a transição diretamente no CSS */
+  }
+
   .signin-signup {
     width: 100%;
     top: 95%;
@@ -321,17 +329,17 @@ form.sign-in-form {
   }
 
   .panel h3 {
-    font-size: 1.2rem;
+    font-size: 1.8rem;
   }
 
   .panel p {
-    font-size: 0.7rem;
-    padding: 0.5rem 0;
+    font-size: 1rem;
+    padding: 0.8rem 0;
   }
 
   .btn.transparent {
     width: 110px;
-    height: 35px;
+    height: 4.4vh;
     font-size: 0.7rem;
   }
 
@@ -343,7 +351,7 @@ form.sign-in-form {
     bottom: 68%;
     right: initial;
     top: initial;
-    transition: 2s ease-in-out;
+    transition: 1.8s ease-in-out;
   }
 
   .container.sign-up-mode:before {
@@ -382,7 +390,7 @@ form.sign-in-form {
     display: none;
   }
   .panel .content {
-    padding: 0.5rem 1rem;
+    padding: 0.2rem 1rem;
   }
   .container {
     padding: 1.5rem;
