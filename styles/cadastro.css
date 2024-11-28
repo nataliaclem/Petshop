@@ -277,10 +277,16 @@ form.sign-in-form {
   }
 
   .forms-container {
-    position: absolute;
+    position: relative; /* Permite que os campos de formulário funcionem corretamente */
+    top: -3vh; /* Posição inicial para o modo login */
+    transition: transform 1s ease-in-out;
+    z-index: 1; /* Assegura que o formulário tenha prioridade visual */
     width: 100%;
-    height: 100%;
-    transition: transform 1s ease-in-out; /* Defina a transição diretamente no CSS */
+  }
+  
+  .container.sign-up-mode .forms-container {
+    transform: translateY(3vh); /* Mover para baixo no modo de cadastro */
+    z-index: 1; /* Garantir que o formulário esteja acima dos outros elementos */
   }
 
   .signin-signup {
@@ -304,7 +310,7 @@ form.sign-in-form {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    padding: 2.5rem 8%;
+    padding: 1.5rem 8%;
     grid-column: 1 / 2;
   }
 
@@ -329,17 +335,17 @@ form.sign-in-form {
   }
 
   .panel h3 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 
   .panel p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     padding: 0.8rem 0;
   }
 
   .btn.transparent {
     width: 110px;
-    height: 4.4vh;
+    height: 35px;
     font-size: 0.7rem;
   }
 

@@ -2,29 +2,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const sign_up_btn = document.querySelector("#sign-up-btn");
   const sign_in_btn = document.querySelector("#sign-in-btn");
   const container = document.querySelector(".container");
-  const formsContainer = document.querySelector(".forms-container");
 
-  // Inicialize a posição do formsContainer no modo de login
-  if (!container.classList.contains("sign-up-mode") && window.innerWidth <= 870) {
-    formsContainer.style.transform = "translateY(-9vh)"; // Modo de login inicial
-  }
-
+  // Quando o botão de cadastro for clicado
   sign_up_btn.addEventListener("click", () => {
-    container.classList.add("sign-up-mode");
-    
-    // Animação de transição para o modo de cadastro
-    if (window.innerWidth <= 870) {
-      formsContainer.style.transform = "translateY(5vh)"; // Descer para o cadastro
-    }
+    container.classList.add("sign-up-mode"); // Ativa o modo cadastro
   });
 
+  // Quando o botão de login for clicado
   sign_in_btn.addEventListener("click", () => {
-    container.classList.remove("sign-up-mode");
-    
-    // Animação de transição para o modo de login
-    if (window.innerWidth <= 870) {
-      formsContainer.style.transform = "translateY(-9vh)"; // Subir para o login
-    }
+    container.classList.remove("sign-up-mode"); // Ativa o modo login
   });
 });
 
