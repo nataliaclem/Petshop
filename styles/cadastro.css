@@ -39,6 +39,34 @@ input {
   z-index: 5;
 }
 
+.back-page {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.back-page-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+  transition: color 0.3s ease;
+  cursor: pointer;
+  padding-top: 1.8vh;
+}
+
+.back-page-container svg {
+  width: 2.7vh;
+  height: auto;
+}
+
+.back-page-container a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.back-page-container:hover {
+  color: #6b42a5;
+}
+
 form {
   display: flex;
   align-items: center;
