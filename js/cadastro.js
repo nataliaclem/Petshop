@@ -46,8 +46,8 @@ function loginUser(username, password) {
 
   if (user) {
     alert("Login realizado com sucesso!");
-    // Aqui você pode redirecionar para outra página
-    window.location.href = "dashboard.html"; // Exemplo
+    localStorage.setItem('currentUser', JSON.stringify(user));  // Salva o usuário logado
+    window.location.href = "index.html";  // Redireciona para a página de adoções (ou a página que desejar)
   } else {
     alert("Usuário ou senha inválidos!");
   }

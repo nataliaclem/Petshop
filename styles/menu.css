@@ -88,6 +88,16 @@ nav {
 }
 
 /* Botão do Cadastro*/
+
+#logout-link i {
+    font-size: 1.2em;   /* Tamanho do ícone */
+}
+
+/* Ajuste de ícone do botão de cadastro */
+.cadastro-icone i {
+    margin-right: 0.1rem;
+}
+
 .cadastro-botao {
     color: var(--cor-texto-carrinho);
     background-color: var(--cor-fundo-carrinho);

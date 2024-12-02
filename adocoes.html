@@ -3,44 +3,102 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="styles/adocoes.css">
+  <link rel="stylesheet" href="styles/menu.css">
   <title>Adotar</title>
 </head>
 <body>
-  <nav>
-    <div class="logo">
-        <img src="img/logotipo.png" alt="Logo Image">
-    </div>
-    <div class="hamburger">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-    </div>
-    <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="produto.html">Produtos</a></li>
-        <li><a href="carrinho.html">Carrinho</a></li>
-        <li><a href="adote.html">Adote-me</a></li>
-        <li><a href="adocoes.html">Suas adoções</a></li>
-        
-       
-        <li>
-            <a href="cadastro.html">
-                <button class="cadastro-botao">
-                    <div class="cadastro-icone">
-                        <i class="fa-solid fa-paw"></i>
-                    </div>
-                    Cadastro/Entrar
-                </button>
-            </a>
-        </li>
-    </ul>
-</nav>
+    <nav>
+        <div class="logo">
+            <img src="img/logotipo.png" alt="Logo Image">
+        </div>
+        <div class="hamburger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="produto.html">Produtos</a></li>
+            <li><a href="carrinho.html">Carrinho</a></li>
+            <li><a href="adote.html">Adote-me</a></li>
+            <li><a href="adocoes.html">Suas adoções</a></li>
+            
+           
+            <li id="login-action">
+                <a href="cadastro.html" id="cadastro-link">
+                    <button class="cadastro-botao" id="cadastro-btn">
+                        <div class="cadastro-icone">
+                            <i class="fa-solid fa-paw"></i>
+                        </div>
+                        Cadastro/Entrar
+                    </button>
+                </a>
+            </li>
 
-<section id="animais" class="animais">
-  <h2>Bem-vindo a pagina de suas adoções</h2>
-  <div class="animais-lista">
-</section>
+            <li id="logout-action" style="display: none;">
+                <a href="#" id="logout-link">
+                    <button class="cadastro-botao">
+                        <div class="cadastro-icone">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </div>
+                        Sair da Minha Conta
+                    </button>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Botão de Adicionar -->
+<div class="add-pet-btn" onclick="openModal()">
+    <span>+</span>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h2>Adicionar Novo Pet</h2>
+      <form id="addPetForm">
+
+        <label for="photoUrl">URL da Foto:</label>
+        <input type="url" id="photoUrl" name="photoUrl" required>
+
+        <label for="petName">Nome do Animal:</label>
+        <input type="text" id="petName" name="petName" required>
+  
+        <label for="petAge">Idade:</label>
+        <input type="text" id="petAge" name="petAge" required>
+
+        <label for="category">Categoria:</label>
+      <select id="category" name="category" required>
+        <option value="" disabled selected>Selecione uma categoria</option>
+        <option value="Cachorro">Cachorro</option>
+        <option value="Gato">Gato</option>
+        <option value="Coelho">Coelho</option>
+      </select>
+      
+        <label for="petInfo">Informações sobre o Pet:</label>
+        <textarea id="petInfo" name="petInfo" rows="4" placeholder="Ex.: Raça, cor, comportamento, etc."></textarea>
+  
+        <label for="donorName">Nome do Doador:</label>
+        <input type="text" id="donorName" name="donorName" required>
+  
+       
+  
+        <div class="modal-actions">
+          <button type="button" onclick="closeModal()">Cancelar</button>
+          <button type="submit">Adicionar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+    <section id="animais" class="animais">
+        <h2>Bem-vindo a página de suas adoções</h2>
+        <h1>Teste</h1>
+        <div class="animais-lista">
+      </section>
 
 
 
@@ -48,5 +106,10 @@
       <p>&copy; 2024 Adoção Pet Analia Todos os direitos reservados.</p>
       <p>Contato: 5005-7007 <a href="adoçãoanalia@gmail.com">contato@adocaoAnalia.com</a></p>
   </footer>
+
+  <script src="js/global.js"></script>
+  <script src="js/adocoes.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/bolinha.js"></script>
 </body>
 </html>

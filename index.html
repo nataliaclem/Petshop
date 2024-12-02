@@ -32,9 +32,9 @@
             <li><a href="adocoes.html">Suas adoções</a></li>
             
            
-            <li>
-                <a href="cadastro.html">
-                    <button class="cadastro-botao">
+            <li id="login-action">
+                <a href="cadastro.html" id="cadastro-link">
+                    <button class="cadastro-botao" id="cadastro-btn">
                         <div class="cadastro-icone">
                             <i class="fa-solid fa-paw"></i>
                         </div>
@@ -42,10 +42,20 @@
                     </button>
                 </a>
             </li>
+
+            <li id="logout-action" style="display: none;">
+                <a href="#" id="logout-link">
+                    <button class="cadastro-botao">
+                        <div class="cadastro-icone">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </div>
+                        Sair da Minha Conta
+                    </button>
+                </a>
+            </li>
         </ul>
     </nav>
     
-
     <!-- Banner -->
 
     <div id="carouselExampleIndicators" class="carousel slide">
@@ -87,17 +97,21 @@
             <div class="animal">
                 <img src="https://blog-static.petlove.com.br/wp-content/uploads/2019/12/cachorra-femea-petlove.jpg" alt="cachorro">
                 <h3>Luna</h3>
-                <p>cachorro, 2 anos, tranquila e carinhosa. Perfeita para quem mora sozinho e busca companhia.</p>
+                <p>Idade: 2 Anos</p>
+                <p>cachorro, tranquila e carinhosa. Perfeita para quem mora sozinho e busca companhia.</p>
+                <p>Doador(a): Roberto</p>
                 <a href="cadastro.html">
                     <button>Adotar</button>
                 </a>
             </div>
 
             <!-- gatos -->
-            <div class="animal">
+            <<div class="animal">
                 <img src="https://www.petz.com.br/blog/wp-content/uploads/2019/07/vida-de-gato.jpg" alt="Gato">
                 <h3>Théo</h3>
-                <p>gato, 3 aninhos amigavel e efetuoso precisa de um dono para suas brincadeiras</p>
+                <p>Idade: 3 Anos</p>
+                <p>gato, amigavel e efetuoso precisa de um dono para suas brincadeiras</p>
+                <p>Doador(a): Jessica</p>
                 <a href="cadastro.html">
                     <button>Adotar</button>
                 </a>
@@ -106,16 +120,21 @@
             <div class="animal">
                 <img src="https://www.petz.com.br/blog/wp-content/uploads/2023/08/como-saber-quantos-meses-o-gato-tem.jpg" alt="Gato">
                 <h3>Mel</h3>
-                <p>gato, 1 aninho carinhoso, amoroso, para aqueles que deseja um animal apegado</p>
+                <p>Idade: 1 Anos</p>
+                <p>gato, carinhoso e amoroso, para aqueles que deseja um animal apegado</p>
+                <p>Doador(a): Fernanda </p>
                 <a href="cadastro.html">
                     <button>Adotar</button>
                 </a>
             </div>
+
             <!-- coelhos -->
             <div class="animal">
                 <img src="https://www.exoticvet.com.br/wp-content/uploads/2022/08/img_1005.jpg" alt="Mini Lop">
                 <h3>Cookie</h3>
-                <p>coelho, 1 aninho, da raça Mini Lop, com orelhas caídas. Muito dócil e adora petiscos.</p>
+                <p>Idade: 1 Ano </p>
+                <p>coelho,  da raça Mini Lop, com orelhas caídas. Muito dócil e adora petiscos.</p>
+                <p>Doador(a): Antonio</p>
                 <a href="cadastro.html">
                     <button>Adotar</button>
                 </a>
@@ -210,6 +229,7 @@
         <p>Contato: 5005-7007 <a href="adoçãoanalia@gmail.com">contato@adocaoAnalia.com</a></p>
     </footer>
 
+    <script src="js/global.js"></script>
     <script src="js/index.js"></script>
     <script src="js/menu.js"></script>
 </body>
