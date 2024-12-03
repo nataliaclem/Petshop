@@ -135,6 +135,14 @@ function filterPets(filters) {
             // No modo grid, garantimos que o card ocupe o espaço corretamente no grid
             if (!isListView) {
                 card.style.gridRow = 'auto';  // No grid, ocupa o espaço correto na grade
+                card.style.display = '';  // No grid, usa o comportamento padrão de grid
+            }
+
+            // Para o modo lista, garantimos que o card fique empilhado verticalmente
+            if (isListView) {
+                card.style.display = '';  // Usa o layout de bloco por padrão
+                card.style.width = '100%';  // Garante que os cards ocupem toda a largura
+                card.style.flexDirection = 'column'; // Empilha os cards verticalmente
             }
         } else {
             card.style.visibility = 'hidden';  // Torna o card invisível
@@ -145,27 +153,28 @@ function filterPets(filters) {
             // No modo lista, ocultamos completamente o card, removendo o espaço ocupado
             if (isListView) {
                 card.style.visibility = 'hidden';  // Torna o card invisível
-                card.style.height = '0';  // Remover a altura e espaço ocupado
+                card.style.height = '0';  // Remove a altura e o espaço ocupado
                 card.style.margin = '0';  // Remove a margem
             } else {
                 card.style.gridRow = 'none';  // No grid, remove o card da grade (evita lacunas)
+                card.style.display = 'none';  // Garante que o card não ocupe espaço no grid
             }
         }
     });
 
     // Se necessário, forçar o layout a recalcular após os filtros
-    forceReflow();
+    // Removido forceReflow(), pois não é necessário
 }
 
+// Função para converter a idade textual para meses (Ex.: "1 ano", "2 anos", "6 meses")
 function converterIdadeParaMeses(idadeTexto) {
     let meses = 0;
 
-    // Remove espaços extras e coloca o texto em minúsculas para consistência
     idadeTexto = idadeTexto.toLowerCase().trim();
 
     // Verifica se contém "ano" e extrai o número de anos
     if (idadeTexto.includes('ano')) {
-        const matchAnos = idadeTexto.match(/(\d+)\s*ano/); // Captura "1 ano", "2 anos"
+        const matchAnos = idadeTexto.match(/(\d+)\s*ano/);
         if (matchAnos) {
             meses += parseInt(matchAnos[1]) * 12; // Converte anos para meses
         }
@@ -173,7 +182,7 @@ function converterIdadeParaMeses(idadeTexto) {
 
     // Verifica se contém "meses" e extrai o número de meses
     if (idadeTexto.includes('meses') || idadeTexto.includes('mês')) {
-        const matchMeses = idadeTexto.match(/(\d+)\s*mês/); // Captura "6 meses", "1 mês"
+        const matchMeses = idadeTexto.match(/(\d+)\s*mês/);
         if (matchMeses) {
             meses += parseInt(matchMeses[1]); // Adiciona os meses ao total
         }
@@ -182,7 +191,7 @@ function converterIdadeParaMeses(idadeTexto) {
     return meses;
 }
 
-// Verifica se a idade corresponde à faixa etária do filtro
+// Função para verificar a faixa etária do pet
 function correspondeFaixaEtaria(idadeFiltro, idadeMeses) {
     switch (idadeFiltro) {
         case 'Filhote':
