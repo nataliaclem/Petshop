@@ -1,459 +1,115 @@
-// adocoes.js - Lógica específica para a página de adoções
+document.addEventListener("DOMContentLoaded", function () {
+    const adoptedPetsContainer = document.getElementById("adoptedPets");
+    const noPetsMessage = document.getElementById("noPetsMessage");
 
-document.addEventListener('DOMContentLoaded', function() {
-    updateUI();  // Atualiza a interface com base no estado de login
-  });
+    // Configura o estilo da grade dinamicamente
+    adoptedPetsContainer.style.display = "grid";
+    adoptedPetsContainer.style.gridTemplateColumns = "repeat(auto-fill, minmax(300px, 1fr))";
+    adoptedPetsContainer.style.gap = "20px";
+    adoptedPetsContainer.style.padding = "20px";
 
-
-  // Código Externo
-
-  $("input.variation").on("input", function () { // "input" é mais responsivo que "click" para campos
-    const value = parseInt($(this).val()); // Garante que o valor é um número
-    if (value > 3) {
-        $("body").css("background", "#111");
-        $("footer").addClass("dark"); // Adiciona a classe sem sobrescrever
-    } else {
-        $("body").css("background", "#f9f9f9");
-        $("footer").removeClass("dark"); // Remove a classe apenas se existir
+    // Atualiza a visibilidade da mensagem
+    function updateNoPetsMessage() {
+        const pets = JSON.parse(localStorage.getItem("adoptedPets")) || [];
+        noPetsMessage.style.display = pets.length === 0 ? "block" : "none";
     }
-});
 
-$(".option__button").on("click", function () {
-    $(".option__button").removeClass("selected");
-    $(this).addClass("selected");
-    if ($(this).hasClass("option--grid")) {
-        $(".results-section").removeClass("results--list").addClass("results--grid");
-    } else if ($(this).hasClass("option--list")) {
-        $(".results-section").removeClass("results--grid").addClass("results--list");
+    // Carrega os perfis do localStorage
+    function loadAdoptedPets() {
+        const pets = JSON.parse(localStorage.getItem("adoptedPets")) || [];
+        adoptedPetsContainer.innerHTML = "";
+
+        if (pets.length === 0) {
+            updateNoPetsMessage();
+            return;
+        }
+
+        pets.forEach((pet) => {
+            const petCard = createPetCard(pet);
+            adoptedPetsContainer.appendChild(petCard);
+        });
+
+        updateNoPetsMessage();
     }
-});
 
-
-
-document.addEventListener('DOMContentLoaded', function () {
-    loadPetsFromStorage();
-    addFilterListeners(); // Adiciona os listeners para os filtros
-});
-
-// Adiciona listeners aos checkboxes
-function addFilterListeners() {
-    const checkboxes = document.querySelectorAll('.filters input[type="checkbox"]');
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', applyFilters);
-    });
-}
-
-// Aplica os filtros ativos
-function applyFilters() {
-    const selectedFilters = {
-        idade: [],
-        tipo: []
-    };
-
-    // Coleta os filtros de idade
-    if (document.getElementById('checkbox-1').checked) selectedFilters.idade.push('Filhote');
-    if (document.getElementById('checkbox-2').checked) selectedFilters.idade.push('Jovem');
-    if (document.getElementById('checkbox-3').checked) selectedFilters.idade.push('Adulto');
-    if (document.getElementById('checkbox-4').checked) selectedFilters.idade.push('Idoso');
-
-    // Coleta os filtros de tipo
-    if (document.getElementById('checkbox-5').checked) selectedFilters.tipo.push('Cachorro');
-    if (document.getElementById('checkbox-6').checked) selectedFilters.tipo.push('Gato');
-    if (document.getElementById('checkbox-7').checked) selectedFilters.tipo.push('Coelho');
-
-    filterPets(selectedFilters);
-}
-
-// Filtra os pets baseados nos filtros selecionados
-function filterPets(filters) {
-    const petCards = document.querySelectorAll('.profile');
-    const isListView = document.querySelector('.results-section').classList.contains('results--list'); // Verifica se está no modo lista
-
-    petCards.forEach(card => {
-        const petTipo = card.querySelector('.profile__stats__info').textContent;
-        const petIdadeTexto = card.querySelector('.profile__stats:nth-child(5) h5').textContent.trim();
-
-        // Converte a idade textual para meses
-        const petIdadeMeses = converterIdadeParaMeses(petIdadeTexto);
-
-        // Determina se o pet corresponde aos filtros de tipo e idade
-        const matchesTipo = filters.tipo.length === 0 || filters.tipo.includes(petTipo);
-        const matchesIdade = filters.idade.length === 0 || filters.idade.some(idade => correspondeFaixaEtaria(idade, petIdadeMeses));
-
-        if (matchesTipo && matchesIdade) {
-            card.style.visibility = 'visible';  // Torna o card visível
-            card.style.opacity = '1';  // Torna o card completamente visível
-            card.style.height = 'auto'; // Garante que o card tenha altura automática
-            card.style.margin = '20px'; // Restaura a margem do card
-
-            // No modo lista, garantimos que o card ocupe o espaço corretamente na vertical
-            if (isListView) {
-                card.style.display = 'flex'; // No modo lista, usamos display flex
-                card.style.flexDirection = 'column'; // Organiza o conteúdo verticalmente
+    // Cria um card de perfil para cada animal
+    function createPetCard(pet) {
+        const card = document.createElement("div");
+        card.classList.add("profile");
+        card.setAttribute("data-id", pet.id);
+    
+        card.style.backgroundColor = "white";
+        card.style.borderRadius = "10px";
+        card.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
+        card.style.overflow = "hidden";
+        card.style.display = "flex";
+        card.style.flexDirection = "column";
+    
+        card.innerHTML = `
+            <div class="profile__image">
+                <img src="${pet.image || ''}" alt="${pet.name || 'Sem nome'}">
+            </div>
+            <div class="profile__info">
+                <h3>${pet.name || 'Sem nome'}</h3>
+                <p class="profile__info__extra">${pet.description || 'Sem informações'}</p>
+            </div>
+            <div class="profile__stats">
+                <p class="profile__stats__title">Tipo</p>
+                <h5 class="profile__stats__info">${pet.type || 'Sem categoria'}</h5>
+            </div>
+            <div class="profile__stats">
+                <p class="profile__stats__title">Doador</p>
+                <h5>${pet.donor || 'Sem doador'}</h5>
+            </div>
+            <div class="profile__stats">
+                <p class="profile__stats__title">Idade</p>
+                <h5>${pet.age || 'Sem idade'}</h5>
+            </div>
+            <div class="profile__cta">
+                <a class="button">Adotar ${pet.name}</a>
+                <a class="button2" data-id="${pet.id}"><i class="fa-solid fa-x"></i></a>
+            </div>
+        `;
+    
+        const adoptButton = card.querySelector(".button");
+        adoptButton.addEventListener("click", function () {
+            // Salvando os dados no localStorage com a chave "adotar"
+            localStorage.setItem("adotar", JSON.stringify(pet));
+        
+            // Removendo o pet da lista de 'adoptedPets' no localStorage
+            let pets = JSON.parse(localStorage.getItem("adoptedPets")) || [];
+            pets = pets.filter((p) => String(p.id) !== String(pet.id));
+            localStorage.setItem("adoptedPets", JSON.stringify(pets));
+        
+            // Remove o card do DOM
+            const petCard = document.querySelector(`.profile[data-id="${pet.id}"]`);
+            if (petCard) {
+                petCard.remove();
             }
-        } else {
-            card.style.visibility = 'hidden';  // Torna o card invisível
-            card.style.opacity = '0';  // Torna o card transparente
-            card.style.height = '0'; // Remove o espaço do card do layout
-            card.style.margin = '0';  // Remove a margem do card invisível
-
-            // No modo lista, ocultamos completamente o card, removendo o espaço ocupado
-            if (isListView) {
-                card.style.visibility = 'hidden';  // Torna o card invisível
-                card.style.height = '0';  // Remover a altura e espaço ocupado
-                card.style.margin = '0';  // Remove a margem
-            }
-        }
-    });
-
-    // Se necessário, forçar o layout a recalcular após os filtros
-    forceReflow();
-}
-
-// Filtra os pets baseados nos filtros selecionados
-function filterPets(filters) {
-    const petCards = document.querySelectorAll('.profile');
-    const isListView = document.querySelector('.results-section').classList.contains('results--list'); // Verifica se está no modo lista
-
-    petCards.forEach(card => {
-        const petTipo = card.querySelector('.profile__stats__info').textContent;
-        const petIdadeTexto = card.querySelector('.profile__stats:nth-child(5) h5').textContent.trim();
-
-        // Converte a idade textual para meses
-        const petIdadeMeses = converterIdadeParaMeses(petIdadeTexto);
-
-        // Determina se o pet corresponde aos filtros de tipo e idade
-        const matchesTipo = filters.tipo.length === 0 || filters.tipo.includes(petTipo);
-        const matchesIdade = filters.idade.length === 0 || filters.idade.some(idade => correspondeFaixaEtaria(idade, petIdadeMeses));
-
-        if (matchesTipo && matchesIdade) {
-            card.style.visibility = 'visible';  // Torna o card visível
-            card.style.opacity = '1';  // Torna o card completamente visível
-            card.style.height = 'auto'; // Garante que o card tenha altura automática
-            card.style.margin = '20px'; // Restaura a margem do card
-
-            // No modo grid, garantimos que o card ocupe o espaço corretamente no grid
-            if (!isListView) {
-                card.style.gridRow = 'auto';  // No grid, ocupa o espaço correto na grade
-            }
-        } else {
-            card.style.visibility = 'hidden';  // Torna o card invisível
-            card.style.opacity = '0';  // Torna o card transparente
-            card.style.height = '0'; // Remove o espaço do card do layout
-            card.style.margin = '0';  // Remove a margem do card invisível
-
-            // No modo lista, ocultamos completamente o card, removendo o espaço ocupado
-            if (isListView) {
-                card.style.visibility = 'hidden';  // Torna o card invisível
-                card.style.height = '0';  // Remover a altura e espaço ocupado
-                card.style.margin = '0';  // Remove a margem
-            } else {
-                card.style.gridRow = 'none';  // No grid, remove o card da grade (evita lacunas)
-            }
-        }
-    });
-
-    // Se necessário, forçar o layout a recalcular após os filtros
-    forceReflow();
-}
-
-function converterIdadeParaMeses(idadeTexto) {
-    let meses = 0;
-
-    // Remove espaços extras e coloca o texto em minúsculas para consistência
-    idadeTexto = idadeTexto.toLowerCase().trim();
-
-    // Verifica se contém "ano" e extrai o número de anos
-    if (idadeTexto.includes('ano')) {
-        const matchAnos = idadeTexto.match(/(\d+)\s*ano/); // Captura "1 ano", "2 anos"
-        if (matchAnos) {
-            meses += parseInt(matchAnos[1]) * 12; // Converte anos para meses
-        }
+        
+            // Atualiza a mensagem de 'sem pets' se necessário
+            updateNoPetsMessage();
+        
+            // Redirecionar para outro link (substitua pela URL desejada)
+            window.location.href = "file:///C:/Users/Leonardo%20Santos/Documents/MeusProjetos/Petshop/adotar.html";
+        });
+    
+        return card;
     }
 
-    // Verifica se contém "meses" e extrai o número de meses
-    if (idadeTexto.includes('meses') || idadeTexto.includes('mês')) {
-        const matchMeses = idadeTexto.match(/(\d+)\s*mês/); // Captura "6 meses", "1 mês"
-        if (matchMeses) {
-            meses += parseInt(matchMeses[1]); // Adiciona os meses ao total
+    // Remove um animal do localStorage e da interface
+    function removePet(petId) {
+        let pets = JSON.parse(localStorage.getItem("adoptedPets")) || [];
+        pets = pets.filter((pet) => String(pet.id) !== String(petId));
+        localStorage.setItem("adoptedPets", JSON.stringify(pets));
+
+        const petCard = document.querySelector(`.profile[data-id="${petId}"]`);
+        if (petCard) {
+            petCard.remove();
         }
+
+        updateNoPetsMessage(); // Atualiza a mensagem após remover
     }
 
-    return meses;
-}
-
-// Verifica se a idade corresponde à faixa etária do filtro
-function correspondeFaixaEtaria(idadeFiltro, idadeMeses) {
-    switch (idadeFiltro) {
-        case 'Filhote':
-            return idadeMeses < 18;
-        case 'Jovem':
-            return idadeMeses >= 12 && idadeMeses <= 24;
-        case 'Adulto':
-            return idadeMeses >= 36 && idadeMeses <= 48;
-        case 'Idoso':
-            return idadeMeses >= 60;
-        default:
-            return false;
-    }
-}
-
-
-
-document.addEventListener('DOMContentLoaded', function () {
-    updateBadgeCounts();  // Atualiza os badges com as contagens corretas
+    loadAdoptedPets();
 });
-
-// Função para atualizar os badges com as contagens dos perfis
-function updateBadgeCounts() {
-    const petCards = document.querySelectorAll('.profile');  // Todos os perfis de pets no DOM
-    let filhoteCount = 0, jovemCount = 0, adultoCount = 0, idosoCount = 0;
-    let cachorroCount = 0, gatoCount = 0, coelhoCount = 0;
-
-    // Percorre todos os cards de pet e conta por tipo e idade
-    petCards.forEach(card => {
-        const petTipo = card.querySelector('.profile__stats__info').textContent.trim();  // Tipo do pet
-        const petIdadeTexto = card.querySelector('.profile__stats:nth-child(5) h5').textContent.trim();  // Idade do pet
-
-        // Converte a idade textual para meses
-        const petIdadeMeses = converterIdadeParaMeses(petIdadeTexto);
-
-        // Contagem por idade
-        if (petIdadeMeses < 18) filhoteCount++;
-        else if (petIdadeMeses >= 12 && petIdadeMeses <= 24) jovemCount++;
-        else if (petIdadeMeses >= 36 && petIdadeMeses <= 48) adultoCount++;
-        else if (petIdadeMeses >= 60) idosoCount++;
-
-        // Contagem por tipo
-        if (petTipo === 'Cachorro') cachorroCount++;
-        else if (petTipo === 'Gato') gatoCount++;
-        else if (petTipo === 'Coelho') coelhoCount++;
-    });
-
-    // Atualizar os badges de idade
-    updateBadge('#checkbox-1', filhoteCount); // Badge para Filhote
-    updateBadge('#checkbox-2', jovemCount);   // Badge para Jovem
-    updateBadge('#checkbox-3', adultoCount);  // Badge para Adulto
-    updateBadge('#checkbox-4', idosoCount);   // Badge para Idoso
-
-    // Atualizar os badges de tipo
-    updateBadge('#checkbox-5', cachorroCount); // Badge para Cachorros
-    updateBadge('#checkbox-6', gatoCount);    // Badge para Gatos
-    updateBadge('#checkbox-7', coelhoCount);  // Badge para Coelhos
-}
-
-// Função para atualizar o conteúdo do badge, caso o elemento exista
-function updateBadge(selector, count) {
-    const checkbox = document.querySelector(selector);
-    if (checkbox) {
-        // Acessa o badge corretamente, que está depois do label, não do checkbox
-        const badge = checkbox.closest('.filters__item').querySelector('.badge');
-        if (badge) {
-            badge.textContent = count;  // Atualiza o número no badge
-        } else {
-            console.log('Badge não encontrado para:', selector);
-        }
-    } else {
-        console.log('Checkbox não encontrado para:', selector);
-    }
-}
-
-// Função para converter a idade textual para meses (Ex.: "1 ano", "2 anos", "6 meses")
-function converterIdadeParaMeses(idadeTexto) {
-    let meses = 0;
-
-    idadeTexto = idadeTexto.toLowerCase().trim();
-
-    // Verifica se contém "ano" e extrai o número de anos
-    if (idadeTexto.includes('ano')) {
-        const matchAnos = idadeTexto.match(/(\d+)\s*ano/);
-        if (matchAnos) {
-            meses += parseInt(matchAnos[1]) * 12; // Converte anos para meses
-        }
-    }
-
-    // Verifica se contém "meses" e extrai o número de meses
-    if (idadeTexto.includes('meses') || idadeTexto.includes('mês')) {
-        const matchMeses = idadeTexto.match(/(\d+)\s*mês/);
-        if (matchMeses) {
-            meses += parseInt(matchMeses[1]); // Adiciona os meses ao total
-        }
-    }
-
-    return meses;
-}
-
-
-
-// Modal e Profile
-
-// Abrir o modal
-function openModal() {
-    document.getElementById("modal").style.display = "flex";
-}
-
-// Fechar o modal
-function closeModal() {
-    document.getElementById("modal").style.display = "none";
-}
-
-// Coletar dados do formulário e salvar no Local Storage
-document.getElementById("addPetForm").addEventListener("submit", function (e) {
-    e.preventDefault(); // Impedir o reload da página
-
-    // Coletar os dados do formulário
-    const petName = document.getElementById("petName").value.trim();
-    const petAge = document.getElementById("petAge").value.trim();
-    const donorName = document.getElementById("donorName").value.trim();  // Capturar o nome do doador
-    const photoUrl = document.getElementById("photoUrl").value.trim();
-    const petInfo = document.getElementById("petInfo").value.trim();
-    const category = document.getElementById("category").value.trim();
-
-    // Gerar um ID único para o pet
-    const petId = Date.now(); // Usando o timestamp como ID único (alternativa: gerar UUID)
-
-    // Exibir no console os dados capturados para depuração
-    console.log("Pet criado:", { petName, petAge, donorName, photoUrl, petInfo, category, petId });
-
-    // Validar se todos os campos obrigatórios estão preenchidos
-    if (petName && petAge && donorName && photoUrl && category) {
-        // Criar objeto com os dados do pet
-        const newPet = {
-            id: petId,  // Adiciona um ID único para o pet
-            photoUrl,
-            petName,
-            petAge,
-            category,
-            petInfo,
-            donorName  // Adicionando o nome do doador ao objeto newPet
-        };
-
-        // Recuperar os pets existentes no localStorage (ou criar uma lista nova se não houver nada salvo)
-        let pets = JSON.parse(localStorage.getItem("pets")) || [];
-
-        // Adicionar o novo pet à lista
-        pets.push(newPet);
-
-        // Salvar a lista atualizada no localStorage
-        localStorage.setItem("pets", JSON.stringify(pets));
-
-        // Exibir mensagem de sucesso
-        alert("Pet adicionado com sucesso!");
-
-        // Criar o card do pet e adicionar à interface
-        addPetCard(newPet);
-
-        // Atualizar os badges com as contagens corretas
-        updateBadgeCounts();
-
-        // Fechar o modal e resetar o formulário
-        closeModal();
-        this.reset();
-    } else {
-        alert("Por favor, preencha todos os campos obrigatórios!");
-    }
-});
-
-// Função para carregar pets do Local Storage ao carregar a página
-function loadPetsFromStorage() {
-    const pets = JSON.parse(localStorage.getItem('pets')) || [];  // Recupera os pets do Local Storage
-    console.log("Pets carregados do Local Storage:", pets); // Verifica se os pets estão sendo carregados
-
-    // Se existirem pets, chama a função addPetCard para cada um
-    pets.forEach(pet => {
-        addPetCard(pet);  // Adiciona o card de cada pet
-    });
-}
-
-// Função para carregar pets do Local Storage ao carregar a página
-function loadPetsFromStorage() {
-    const pets = JSON.parse(localStorage.getItem('pets')) || [];  // Recupera os pets do Local Storage
-
-    // Verifica se os pets estão sendo carregados corretamente
-    console.log("Pets carregados do Local Storage:", pets);
-
-    // Adiciona os cards dos pets que não estão ainda no DOM
-    pets.forEach(pet => {
-        if (!document.querySelector(`[data-id="${pet.id}"]`)) {  // Verifica se o card já foi adicionado
-            addPetCard(pet);  // Adiciona o card de cada pet, se não estiver no DOM
-        }
-    });
-}
-
-// Função para criar e adicionar o card do pet
-function addPetCard(pet) {
-    const resultsSection = document.querySelector('.results-section');
-
-    // Verifica se o card já existe no DOM
-    if (document.querySelector(`[data-id="${pet.id}"]`)) {
-        return;  // Se o card já existir, não adiciona novamente
-    }
-
-    // Criar o HTML do card com um ID único para o pet
-    const petCard = document.createElement('div');
-    petCard.classList.add('profile');
-    petCard.setAttribute('data-id', pet.id); // Adiciona o ID ao data-id do card
-    petCard.innerHTML = `
-        <div class="profile__image">
-            <img src="${pet.photoUrl}" alt="${pet.petName}" />
-        </div>
-        <div class="profile__info">
-            <h3>${pet.petName}</h3>
-            <p class="profile__info__extra">${pet.petInfo}</p>
-        </div>
-        <div class="profile__stats">
-            <p class="profile__stats__title">Tipo</p>
-            <h5 class="profile__stats__info">${pet.category}</h5>
-        </div>
-        <div class="profile__stats">
-            <p class="profile__stats__title">Doador</p>
-            <h5>${pet.donorName}</h5> <!-- Nome do Doador -->
-        </div>
-        <div class="profile__stats">
-            <p class="profile__stats__title">Idade</p>
-            <h5>${pet.petAge}</h5>
-        </div>
-        <div class="profile__cta">
-            <a class="button">Adopt ${pet.petName}!</a>
-            <a class="button2" data-id="${pet.id}"><i class="fa-solid fa-x"></i></a>
-        </div>
-    `;
-
-    // Adicionar o card ao contêiner
-    resultsSection.appendChild(petCard);
-
-    // Adicionar o evento de clique no botão de remover
-    const removeButton = petCard.querySelector('.button2');
-    removeButton.addEventListener('click', function (e) {
-        e.preventDefault();
-        removePet(pet.id, petCard);  // Chama a função de remoção, passando o ID e o card
-    });
-}
-
-// Função para remover o pet do Local Storage e do card
-function removePet(petId, petCard) {
-    // Recuperar pets do Local Storage
-    let pets = JSON.parse(localStorage.getItem("pets")) || [];
-
-    // Filtrar o pet a ser removido
-    pets = pets.filter(pet => pet.id !== petId);
-
-    // Se não houver mais pets, remover a chave "pets" do Local Storage
-    if (pets.length === 0) {
-        localStorage.removeItem("pets");
-    } else {
-        // Salvar a lista atualizada no Local Storage
-        localStorage.setItem("pets", JSON.stringify(pets));
-    }
-
-    // Remover o card da interface
-    petCard.remove();
-
-    // Atualizar os badges com as contagens corretas
-    updateBadgeCounts();
-
-    alert("Pet removido com sucesso!");
-}
-
-// Carregar pets do Local Storage ao iniciar a página
-document.addEventListener('DOMContentLoaded', loadPetsFromStorage);

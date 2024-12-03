@@ -1,0 +1,13 @@
+.w-48 {
+    width: 100% !important;
+    font-size: 1.3rem !important;
+    font-weight: 600;
+}
+
+.w-32 {
+    width: 10rem !important;
+}
+
+.h-32 {
+    height: 10rem !important;
+}

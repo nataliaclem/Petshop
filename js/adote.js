@@ -466,3 +466,79 @@ function removePet(petId, petCard) {
 
 // Carregar pets do Local Storage ao iniciar a página
 document.addEventListener('DOMContentLoaded', loadPetsFromStorage);
+
+
+
+// Adiciona o evento de clique nos botões "Adotar"
+document.addEventListener('DOMContentLoaded', function () {
+    const adoptButtons = document.querySelectorAll('.profile__cta .button');
+    adoptButtons.forEach(button => {
+        button.addEventListener('click', savePetToLocalStorage);
+    });
+});
+
+function savePetToLocalStorage(event) {
+    event.preventDefault(); // Previne comportamento padrão do link
+
+    // Encontra o card pai do botão clicado
+    const petCard = event.target.closest('.profile');
+
+    // Coleta as informações do pet
+    const imageSrc = petCard.querySelector('.profile__image img').src;
+    const petName = petCard.querySelector('.profile__info h3').textContent.trim();
+    const petDescription = petCard.querySelector('.profile__info__extra').textContent.trim();
+    const petType = petCard.querySelector('.profile__stats__info').textContent.trim();
+    const donorName = petCard.querySelector('.profile__stats:nth-child(4) h5').textContent.trim();
+    const petAge = petCard.querySelector('.profile__stats:nth-child(5) h5').textContent.trim();
+
+    // Cria um objeto com as informações do pet
+    const petData = {
+        id: generatePetId(), // Gera um ID único para o pet
+        image: imageSrc,
+        name: petName,
+        description: petDescription,
+        type: petType,
+        donor: donorName,
+        age: petAge
+    };
+
+    // Recupera os dados existentes do localStorage ou cria um array vazio
+    const adoptedPets = JSON.parse(localStorage.getItem('adoptedPets')) || [];
+
+    // Verifica se o pet já foi adicionado comparando as propriedades
+    const duplicate = adoptedPets.some(pet =>
+        pet.name === petData.name &&
+        pet.description === petData.description &&
+        pet.type === petData.type &&
+        pet.age === petData.age
+    );
+
+    if (duplicate) {
+        alert(`O pet ${petName} já foi adicionado com essas mesmas informações.`);
+        return; // Impede a adição do pet
+    }
+
+    // Adiciona o novo pet à lista
+    adoptedPets.push(petData);
+
+    // Salva a lista atualizada no localStorage
+    localStorage.setItem('adoptedPets', JSON.stringify(adoptedPets));
+
+    // Exibe uma mensagem de sucesso
+    alert(`Conclua a adoção de ${petName} na página de "Suas Adoções"!`);
+}
+
+// Função para gerar um ID único para cada pet
+function generatePetId() {
+    const adoptedPets = JSON.parse(localStorage.getItem('adoptedPets')) || [];
+    // Se não houver pets salvos, começa com o ID 1
+    if (adoptedPets.length === 0) {
+        return 1;
+    } else {
+        // Retorna o maior ID existente + 1
+        const maxId = Math.max(...adoptedPets.map(pet => pet.id));
+        return maxId + 1;
+    }
+}
+
+
