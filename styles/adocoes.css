@@ -33,6 +33,17 @@
   --accent3Shade5: #b71c1c;
 }
 
+#login-message {
+  display: none; /* Inicialmente oculto */
+  text-align: center; /* Centraliza o texto horizontalmente */
+  font-size: 1.5rem; /* Aumenta o tamanho do texto */
+  font-weight: bold; /* Deixa o texto em negrito */
+  color: #6b42a5; /* Escolha uma cor que combine com o tema */
+  margin: 20px auto; /* Adiciona espaçamento */
+  padding: 10px; /* Espaçamento interno */
+  width: 80%; /* Define largura relativa */
+}
+
 .titulo-site {
   padding-top: 20px;
 }
@@ -170,7 +181,7 @@ footer a:hover {
   --canvasColor: #f9f9f9;
 }
 body {
-  background: var(--canvasColor);
+  background: #f9d877;
   font-family: "Poppins", sans-serif;
   font-weight: 300;
   line-height: 1.5;
