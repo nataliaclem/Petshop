@@ -300,7 +300,7 @@ function showNotification(productName) {
     notificationText.innerHTML = `<strong>${productName}</strong> adicionado ao carrinho!`;
     notification.style.display = "flex";
 
-    rectanglefundo.style.background = "#7188da";
+    rectanglefundo.style.background = "#6b42a5";
 
     rectanglefundoImage.src = "https://github.com/LeonardoSantos123/imagensdestinyjoias/blob/main/P%C3%A1gina%20de%20Produtos/Imagens/IconCarrinho.png?raw=true";
 
