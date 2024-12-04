@@ -25,14 +25,15 @@
 /* Menu */
 
 nav {
-    height: 6rem;
+    height: 10vh; /* Use altura relativa */
     width: 100%;
     background-color: var(--fundo-menu);
     box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
     display: flex;
     position: relative;
-    z-index: 50;
-    overflow-y: hidden;
+    z-index: 100;
+    overflow: hidden; /* Remove a barra de rolagem */
+    box-sizing: border-box; /* Inclui padding e border no cálculo da altura */
 }
 
 .cadastro-icone {
@@ -47,15 +48,13 @@ nav {
 /* Logotipo do Menu */
 
 .logo {
-    position: relative;
-    top: 1vh;
-    left: 1.4vw;
+    padding: 1vh 1vw;
     text-align: center;
 }
 
 .logo img {
-    height: 3.8vw;
-    width: 13vw;
+    height: 100%;
+    width: 100%;
 }
 
 /* Categorias do Menu */
@@ -90,16 +89,6 @@ nav {
 }
 
 /* Botão do Cadastro*/
-
-#logout-link i {
-    font-size: 1.2em;   /* Tamanho do ícone */
-}
-
-/* Ajuste de ícone do botão de cadastro */
-.cadastro-icone i {
-    margin-right: 0.1rem;
-}
-
 .cadastro-botao {
     color: var(--cor-texto-carrinho);
     background-color: var(--cor-fundo-carrinho);
@@ -138,7 +127,7 @@ nav {
 
 @media screen and (max-width: 800px) {
     nav {
-        height: 5.3rem;
+        height: 70%;
         position: relative;
         z-index: 10;
     }
@@ -174,7 +163,7 @@ nav {
         position: absolute;
         cursor: pointer;
         right: 2.6vw;
-        top: 4.6vh;
+        top: 47%;
         transform: translate(-5%, -50%);
         transition: all 0.7s ease;
         z-index: 50;

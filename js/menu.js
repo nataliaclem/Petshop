@@ -42,17 +42,3 @@ document.addEventListener('click', (e) => {
         }
     }
 });
-
-// menu.js - Lógica relacionada ao menu e login/logout
-
-// Chama a função updateUI() de auth.js para ajustar a visibilidade
-document.addEventListener('DOMContentLoaded', function() {
-    updateUI();  // Atualiza a interface com base no estado de login
-    
-    const logoutButton = document.querySelector("#logout-action");
-    if (logoutButton) {
-      logoutButton.addEventListener("click", function() {
-        logout(); // Chama a função de logout de auth.js
-      });
-    }
-  });
