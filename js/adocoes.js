@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
             updateNoPetsMessage();
         
             // Redirecionar para outro link (substitua pela URL desejada)
-            window.location.href = "file:///C:/Users/Leonardo%20Santos/Documents/MeusProjetos/Petshop/adotar.html";
+            window.location.href = "https://nataliaclem.github.io/Petshop/adotar.html";
         });
     
         return card;
