@@ -70,7 +70,7 @@ function buyButtonClicked() {
         showPurchaseNotification();
 
         setTimeout(function () {
-            window.location.href = "https://nataliaclem.github.io/Petshop/checkout.html";
+            window.location.href = "https://nataliaclem.github.io/Petshop/Checkout.html";
         }, 2000); 
 
     } else {
