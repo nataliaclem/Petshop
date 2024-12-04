@@ -14,27 +14,27 @@ function getCurrentUser() {
 function updateUI() {
   const currentUser = getCurrentUser();
 
-  // Seleciona os elementos relevantes
+  // Elementos do DOM
   const cadastroButton = document.querySelector(".cadastro-botao");
   const logoutButton = document.querySelector("#logout-action");
-  const animaisSection = document.getElementById("animais");
+  const animaisContent = document.getElementById("animais-content");
+  const loginMessage = document.getElementById("login-message");
 
-  // Atualiza a visibilidade dos botões de cadastro e logout
-  if (cadastroButton && logoutButton) {
-      if (currentUser) {
-          cadastroButton.style.display = "none";
-          logoutButton.style.display = "block";
-      } else {
-          cadastroButton.style.display = "block";
-          logoutButton.style.display = "none";
-      }
+  // Atualiza visibilidade dos botões de login/logout
+  if (currentUser) {
+      cadastroButton.style.display = "none";
+      logoutButton.style.display = "block";
+
+      // Mostra o conteúdo da seção animais
+      if (animaisContent) animaisContent.style.display = "block";
+      if (loginMessage) loginMessage.style.display = "none";
   } else {
-      console.warn("Elementos de UI (cadastro ou logout) não encontrados.");
-  }
+      cadastroButton.style.display = "block";
+      logoutButton.style.display = "none";
 
-  // Atualiza a visibilidade da seção de adoções, se ela existir
-  if (animaisSection) {
-      animaisSection.style.display = currentUser ? "block" : "none";
+      // Mostra a mensagem de login
+      if (animaisContent) animaisContent.style.display = "none";
+      if (loginMessage) loginMessage.style.display = "block";
   }
 }
 
