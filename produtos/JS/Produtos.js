@@ -70,7 +70,7 @@ function buyButtonClicked() {
         showPurchaseNotification();
 
         setTimeout(function () {
-            window.location.href = "https://leonardosantos123.github.io/website-destinyjoias/Checkout.html";
+            window.location.href = "https://nataliaclem.github.io/Petshop/checkout.html";
         }, 2000); 
 
     } else {

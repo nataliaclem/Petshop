@@ -24,7 +24,7 @@
 }
 
 .questoes .questoes-item button[aria-expanded=true] {
-  border-bottom: 1px solid #7188da;
+  border-bottom: 1px solid #6b42a5;
 }
 
 .questoes button {
@@ -44,14 +44,14 @@
 .questoes button:hover,
 .questoes button:focus {
   cursor: pointer;
-  color: #7188da;
+  color: #6b42a5;
 }
 
 .questoes button:hover::after,
 .questoes button:focus::after {
   cursor: pointer;
-  color: #7188da;
-  border: 1px solid #7188da;
+  color: #6b42a5;
+  border: 1px solid #6b42a5;
 }
 
 .questoes button .questoes-title {
@@ -92,7 +92,7 @@
 }
 
 .questoes button[aria-expanded=true] {
-  color: #7188da;
+  color: #6b42a5;
 }
 
 .questoes button[aria-expanded=true] .icon::after {

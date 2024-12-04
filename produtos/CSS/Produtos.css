@@ -54,7 +54,7 @@
   left: -8px;
   width: 46px;
   height: 45px;
-  background: #7188da;
+  background: #6b42a5;
   border-radius: 25px;
   overflow: hidden;
   align-items: center;
@@ -166,7 +166,7 @@
   right: -100%;
   width: 360px;
   height: 130px;
-  background: #7188da;
+  background: #6b42a5;
   box-shadow: -2px 0 4px hsl(0 4% 15% / 10%);
   transition: 0.3s;
 }
@@ -221,7 +221,7 @@
 .cart-quantity {
   border: 2px solid white;
   border-radius: 5px;
-  outline-color: #7188da;
+  outline-color: #6b42a5;
   width: 2.4rem;
   text-align: center;
   font-size: 1rem;
@@ -231,7 +231,7 @@
   position: absolute;
   right: 12px;
   font-size: 30px;
-  color: #7188da;
+  color: #6b42a5;
   cursor: pointer;
 }
 
@@ -260,7 +260,7 @@
   padding: 12px 20px;
   border: none;
   border-radius: 20px;
-  background: #7188da;
+  background: #6b42a5;
   color: white;
   font-size: 1rem;
   font-weight: 500;
@@ -571,7 +571,7 @@
 }
 
 .add-cart .cart2 svg polyline:last-child {
-  stroke: #7188da; 
+  stroke: #6b42a5; 
   stroke-dasharray: 10px;
   stroke-dashoffset: var(--offset, 10px);
   -webkit-transition: stroke-dashoffset 0.4s ease var(--offset-d);
@@ -880,7 +880,7 @@
 @media (max-width: 400px) {
 
   .btn-buy:hover {
-    background-color: #7188da;
+    background-color: #6b42a5;
   }
 
   .nav {
@@ -966,7 +966,7 @@
   letter-spacing: 0.8px;
   font-family: 'Roboto', sans-serif;
   font-weight: 800;
-  color: #7188da;
+  color: #f9d877;
 }
 
 /* Responsividade do Código do Banner de Descontos */
