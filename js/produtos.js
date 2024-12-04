@@ -336,7 +336,7 @@ function showPurchaseNotification() {
     var rectanglefundo = document.querySelector(".rectanglefundo");
     var rectanglefundoImage = rectanglefundo.querySelector("img");
 
-    notificationText.innerHTML = "Obrigado por escolher a Destiny Joias!";
+    notificationText.innerHTML = "Obrigado por escolher a PetAnalia!";
     notification.style.display = "flex";
 
     rectanglefundo.style.background = "#72db7d";
