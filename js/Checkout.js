@@ -1,3 +1,9 @@
+// adocoes.js - Lógica específica para a página de adoções
+
+document.addEventListener('DOMContentLoaded', function() {
+  updateUI();  // Atualiza a interface com base no estado de login
+});
+
 function card_format(value) {
   var v = value.replace(/\s+/g, "").replace(/[^0-9]/gi, "");
   var matches = v.match(/\d{4,16}/g);

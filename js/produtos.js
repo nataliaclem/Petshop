@@ -1,3 +1,9 @@
+// adocoes.js - Lógica específica para a página de adoções
+
+document.addEventListener('DOMContentLoaded', function() {
+    updateUI();  // Atualiza a interface com base no estado de login
+  });
+
 let cartIcon = document.querySelector("#cart-icon");
 let cart = document.querySelector(".cart");
 let cartRectangle = document.querySelector(".cart-rectangle");
@@ -70,7 +76,7 @@ function buyButtonClicked() {
         showPurchaseNotification();
 
         setTimeout(function () {
-            window.location.href = "https://nataliaclem.github.io/Petshop/Checkout.html";
+            window.location.href = "https://nataliaclem.github.io/Petshop/checkout.html";
         }, 2000); 
 
     } else {
