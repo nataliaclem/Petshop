@@ -2,19 +2,91 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PetsAnalia</title>
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="styles/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Boostrap CSS -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- CSS -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="styles/Tela de Carregamento.css">
+  <link rel="stylesheet" href="styles/Componentes.css">
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/menu.css">
+  <link rel="stylesheet" href="produtos/CSS/Produtos.css">
+
+    <!-- Biblioteca JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 </head>
 <body>
 
-    <!-- header -->
+        <!-- ___________________________________________________________________________________ -->
+    
+    <!-- Carrinho de Produtos -->
+    <div class="cart" id="cart">
+        <div class="cart-rectangle">
+          <img class="logo-cart" src="IMG/Logotipo_Carrinho.png">
+        </div>
+        <h2 class="cart-title">Seu Carrinho</h2>
+        <div class="cart-content">
+          <!-- Aqui virão os itens do carrinho -->
+        </div>
+        <div class="total">
+          <div class="total-title">Total</div>
+          <div class="total-price" id="total-price">$0</div>
+        </div>
+        <button type="button" class="btn-buy">Realizar a Compra</button>
+        <i class='bx bx-x' id="close-cart"></i>
+      </div>
+  
+  
+    <!-- ___________________________________________________________________________________ -->
+  
+    <!-- Notificações -->
+  
+    <div class="notification">
+      <div class="rectangle">
+        <div class="rectanglefundo">
+          <img src="">
+        </div>
+        <div class="notification-text">
+          <span></span>
+        </div>
+      </div>
+    </div>
+  
+  
+    <!-- ___________________________________________________________________________________ -->
+
+    <!-- Tela de Carregamento -->
+
+  <div class="profile-main-loader">
+    <div class="loader">
+      <svg class="circular-loader" viewBox="25 25 50 50">
+        <circle class="loader-path" cx="50" cy="50" r="20" fill="none" stroke="#ffffff" stroke-width="2" />
+      </svg>
+    </div>
+  </div>
+  <div id="loading-page">
+
+
+    <!-- Header -->
+
     <nav>
         <div class="logo">
             <img src="img/logotipo.png" alt="Logo Image">
@@ -26,8 +98,7 @@
         </div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="produto.html">Produtos</a></li>
-            <li><a href="carrinho.html">Carrinho</a></li>
+            <li><a href="produtos/Produtos.html">Produtos</a></li>
             <li><a href="adote.html">Adote-me</a></li>
             <li><a href="adocoes.html">Suas adoções</a></li>
             
@@ -42,7 +113,7 @@
                     </button>
                 </a>
             </li>
-
+  
             <li id="logout-action" style="display: none;">
                 <a href="#" id="logout-link">
                     <button class="cadastro-botao">
@@ -53,6 +124,10 @@
                     </button>
                 </a>
             </li>
+            <div id="cart-icon">
+              <img src="IMG/IconCarrinho.png" class="carrinho1">
+              <img src="IMG/IconCarrinho2.png" class="carrinho2">
+            </div>
         </ul>
     </nav>
     
@@ -100,19 +175,19 @@
                 <p>Idade: 2 Anos</p>
                 <p>cachorro, tranquila e carinhosa. Perfeita para quem mora sozinho e busca companhia.</p>
                 <p>Doador(a): Roberto</p>
-                <a href="cadastro.html">
+                <a href="produtos/Produtos.html">
                     <button>Adotar</button>
                 </a>
             </div>
 
             <!-- gatos -->
-            <<div class="animal">
+            <div class="animal">
                 <img src="https://www.petz.com.br/blog/wp-content/uploads/2019/07/vida-de-gato.jpg" alt="Gato">
                 <h3>Théo</h3>
                 <p>Idade: 3 Anos</p>
                 <p>gato, amigavel e efetuoso precisa de um dono para suas brincadeiras</p>
                 <p>Doador(a): Jessica</p>
-                <a href="cadastro.html">
+                <a href="produtos/Produtos.html">
                     <button>Adotar</button>
                 </a>
             </div>
@@ -123,7 +198,7 @@
                 <p>Idade: 1 Anos</p>
                 <p>gato, carinhoso e amoroso, para aqueles que deseja um animal apegado</p>
                 <p>Doador(a): Fernanda </p>
-                <a href="cadastro.html">
+                <a href="produtos/Produtos.html">
                     <button>Adotar</button>
                 </a>
             </div>
@@ -135,7 +210,7 @@
                 <p>Idade: 1 Ano </p>
                 <p>coelho,  da raça Mini Lop, com orelhas caídas. Muito dócil e adora petiscos.</p>
                 <p>Doador(a): Antonio</p>
-                <a href="cadastro.html">
+                <a href="produtos/Produtos.html">
                     <button>Adotar</button>
                 </a>
             </div>
@@ -155,7 +230,7 @@
                 <div class="preco">
                     <span>R$ 12,50</span>
                 </div>
-                <a href="cadastro.html">
+                <a href="produtos/Produtos.html">
                     <button>Comprar</button>
                 </a>
             </div>
@@ -167,7 +242,7 @@
                 <div class="preco">
                     <span>R$ 29,90</span>
                 </div>
-                <a href="cadastro.html">
+                <a href="produtos/Produtos.html">
                     <button>Comprar</button>
                 </a>
             </div>
@@ -179,7 +254,7 @@
                 <div class="preco">
                     <span>R$ 19,99</span>
                 </div>
-                <a href="cadastro.html">
+                <a href="produtos/Produtos.html">
                     <button>Comprar</button>
                 </a>
             </div>
@@ -192,7 +267,7 @@
                 <div class="preco">
                     <span>R$ 49,90</span>
                 </div>
-                <a href="cadastro.html">
+                <a href="produtos/Produtos.html">
                     <button>Comprar</button>
                 </a>
             </div>
@@ -204,7 +279,7 @@
                 <div class="preco">
                     <span>R$ 80,90</span>
                 </div>
-                <a href="cadastro.html">
+                <a href="produtos/Produtos.html">
                     <button>Comprar</button>
                 </a>
             </div>
@@ -216,7 +291,7 @@
                 <div class="preco">
                     <span>R$ 35,90</span>
                 </div>
-                <a href="cadastro.html">
+                <a href="produtos/Produtos.html">
                     <button>Comprar</button>
                 </a>
             </div>
@@ -229,8 +304,13 @@
         <p>Contato: 5005-7007 <a href="adoçãoanalia@gmail.com">contato@adocaoAnalia.com</a></p>
     </footer>
 
+</div>
+
     <script src="js/global.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/Componentes.js"></script>
+    <script src="js/Tela de Carregamento.js"></script>
     <script src="js/menu.js"></script>
+    <script src="produtos/JS/Produtos.js"></script>
 </body>
 </html>
