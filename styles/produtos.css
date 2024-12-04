@@ -12,9 +12,7 @@
   text-decoration: none;
 }
 
-body {
-  background-color: #f9d877;
-}
+
 
 /* ___________________________________________________________________________________ */
 
@@ -370,8 +368,6 @@ body {
   margin: 0 17px;
   position: relative;
   margin-bottom: 50px;
-  background-color: white;
-  border-radius: 2.2vh;
 }
 
 /* Footer */
