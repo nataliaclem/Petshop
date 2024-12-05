@@ -157,8 +157,9 @@
       <h2>Adicionar Novo Pet</h2>
       <form id="addPetForm">
 
-        <label for="photoUrl">URL da Foto:</label>
-        <input type="url" id="photoUrl" name="photoUrl" required>
+        <label for="photoFile">Anexar Foto:</label>
+<input type="file" id="photoFile" name="photoFile" accept="image/*" required>
+<img id="previewImage" style="max-width: 100%; display: none;" alt="Pré-visualização da Imagem">
 
         <label for="petName">Nome do Animal:</label>
         <input type="text" id="petName" name="petName" required>

@@ -20,6 +20,14 @@ footer a:hover {
     height: 60vh; /* Mantém a altura original */
 }
 
+#previewImage {
+  margin-top: 10px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  border: 2px solid #ddd;
+}
+
 .container-adocoes {
     width: 20vw; /* Largura do retângulo */
     height: 40vh; /* Altura do retângulo */
@@ -82,8 +90,10 @@ footer a:hover {
     border-radius: 8px;
     max-width: 400px;
     width: 100%;
+    max-height: 90vh; /* Limita a altura para 90% da viewport */
+    overflow-y: auto; /* Adiciona rolagem vertical se o conteúdo for maior que o modal */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
+}
   
   .modal-content h2 {
     margin-top: 0;

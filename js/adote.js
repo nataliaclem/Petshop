@@ -296,71 +296,86 @@ function converterIdadeParaMeses(idadeTexto) {
 
 // Modal e Profile
 
-// Abrir o modal
+// Exibe a pré-visualização da imagem ao selecionar o arquivo
+document.getElementById('photoFile').addEventListener('change', function (event) {
+    const file = event.target.files[0];
+    const previewImage = document.getElementById('previewImage');
+
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            previewImage.src = e.target.result; // Exibe a imagem selecionada
+            previewImage.style.display = 'block'; // Torna o preview visível
+        };
+        reader.readAsDataURL(file); // Converte o arquivo em URL de dados
+    }
+});
+
+// Função para abrir o modal
 function openModal() {
     document.getElementById("modal").style.display = "flex";
 }
 
-// Fechar o modal
+// Função para fechar o modal
 function closeModal() {
     document.getElementById("modal").style.display = "none";
+    clearPreviewImage(); // Limpa a pré-visualização quando o modal fecha
 }
 
-// Coletar dados do formulário e salvar no Local Storage
-document.getElementById("addPetForm").addEventListener("submit", function (e) {
-    e.preventDefault(); // Impedir o reload da página
+// Limpa a pré-visualização da imagem
+function clearPreviewImage() {
+    const previewImage = document.getElementById("previewImage");
+    previewImage.src = ""; // Remove a imagem do src
+    previewImage.style.display = "none"; // Oculta o elemento
+    document.getElementById("photoFile").value = ""; // Reseta o input de arquivo
+}
 
-    // Coletar os dados do formulário
+// Evento de envio do formulário
+document.getElementById("addPetForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
     const petName = document.getElementById("petName").value.trim();
     const petAge = document.getElementById("petAge").value.trim();
-    const donorName = document.getElementById("donorName").value.trim();  // Capturar o nome do doador
-    const photoUrl = document.getElementById("photoUrl").value.trim();
-    const petInfo = document.getElementById("petInfo").value.trim();
+    const donorName = document.getElementById("donorName").value.trim();
+    const photoFileInput = document.getElementById("photoFile");
     const category = document.getElementById("category").value.trim();
+    const petInfo = document.getElementById("petInfo").value.trim();
 
-    // Gerar um ID único para o pet
-    const petId = Date.now(); // Usando o timestamp como ID único (alternativa: gerar UUID)
+    if (!petName || !petAge || !donorName || !photoFileInput.files.length || !category) {
+        alert("Por favor, preencha todos os campos obrigatórios!");
+        return;
+    }
 
-    // Exibir no console os dados capturados para depuração
-    console.log("Pet criado:", { petName, petAge, donorName, photoUrl, petInfo, category, petId });
+    const file = photoFileInput.files[0];
+    const reader = new FileReader();
 
-    // Validar se todos os campos obrigatórios estão preenchidos
-    if (petName && petAge && donorName && photoUrl && category) {
-        // Criar objeto com os dados do pet
+    reader.onload = function (e) {
+        const photoUrl = e.target.result; // Base64 da imagem
+
         const newPet = {
-            id: petId,  // Adiciona um ID único para o pet
-            photoUrl,
+            id: Date.now(),
+            photoUrl, // Salva a imagem como base64
             petName,
             petAge,
             category,
             petInfo,
-            donorName  // Adicionando o nome do doador ao objeto newPet
+            donorName
         };
 
-        // Recuperar os pets existentes no localStorage (ou criar uma lista nova se não houver nada salvo)
         let pets = JSON.parse(localStorage.getItem("pets")) || [];
-
-        // Adicionar o novo pet à lista
         pets.push(newPet);
-
-        // Salvar a lista atualizada no localStorage
         localStorage.setItem("pets", JSON.stringify(pets));
 
-        // Exibir mensagem de sucesso
         alert("Pet adicionado com sucesso!");
 
-        // Criar o card do pet e adicionar à interface
         addPetCard(newPet);
-
-        // Atualizar os badges com as contagens corretas
         updateBadgeCounts();
 
-        // Fechar o modal e resetar o formulário
-        closeModal();
-        this.reset();
-    } else {
-        alert("Por favor, preencha todos os campos obrigatórios!");
-    }
+        closeModal(); // Fecha o modal e limpa o preview
+        document.getElementById("addPetForm").reset(); // Reseta o formulário
+    };
+
+    reader.readAsDataURL(file); // Converte a imagem em base64
 });
 
 // Função para carregar pets do Local Storage ao carregar a página
@@ -423,7 +438,7 @@ function addPetCard(pet) {
             <h5>${pet.petAge}</h5>
         </div>
         <div class="profile__cta">
-            <a class="button">Adopt ${pet.petName}!</a>
+            <a class="button">Adotar ${pet.petName}!</a>
             <a class="button2" data-id="${pet.id}"><i class="fa-solid fa-x"></i></a>
         </div>
     `;
