@@ -58,22 +58,19 @@
 
 /* Footer */
 footer {
-  background-color: #6b42a5;
-  color: white;
-  text-align: center;
-  padding: 5px;
-  position: fixed; /* Fixa o footer na tela */
-  bottom: 0; /* Coloca o footer na parte inferior da página */
-  width: 100%; /* Garante que o footer ocupe toda a largura */
+    background-color: #6b42a5;
+    color: white;
+    text-align: center;
+    padding: 20px;
 }
 
 footer a {
-  color: #f9d877;
-  text-decoration: none;
+    color: #f9d877;
+    text-decoration: none;
 }
 
 footer a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 
