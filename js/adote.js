@@ -528,7 +528,7 @@ localStorage.setItem('adoptedPets', JSON.stringify(adoptedPets));
 alert(`Conclua a adoção de ${petName} na página de "Suas Adoções"!`);
 
 // Redireciona para a página de adoções
-window.location.href = "file:///C:/Users/Leonardo%20Santos/Documents/MeusProjetos/Petshop/adocoes.html";
+window.location.href = "https://nataliaclem.github.io/Petshop/adocoes.html";
 }
 
 // Função para gerar um ID único para cada pet

@@ -1,5 +1,6 @@
 /* Footer */
 footer {
+  position: relative;
     background-color: #6b42a5;
     color: white;
     text-align: center;
