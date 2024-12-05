@@ -61,7 +61,10 @@ footer {
   background-color: #6b42a5;
   color: white;
   text-align: center;
-  padding: 20px;
+  padding: 5px;
+  position: fixed; /* Fixa o footer na tela */
+  bottom: 0; /* Coloca o footer na parte inferior da página */
+  width: 100%; /* Garante que o footer ocupe toda a largura */
 }
 
 footer a {
@@ -72,6 +75,7 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
+
 
 .w-100 {
   height: 60vh; /* Mantém a altura original */
