@@ -503,29 +503,32 @@ function savePetToLocalStorage(event) {
     };
 
     // Recupera os dados existentes do localStorage ou cria um array vazio
-    const adoptedPets = JSON.parse(localStorage.getItem('adoptedPets')) || [];
+const adoptedPets = JSON.parse(localStorage.getItem('adoptedPets')) || [];
 
-    // Verifica se o pet já foi adicionado comparando as propriedades
-    const duplicate = adoptedPets.some(pet =>
-        pet.name === petData.name &&
-        pet.description === petData.description &&
-        pet.type === petData.type &&
-        pet.age === petData.age
-    );
+// Verifica se o pet já foi adicionado comparando as propriedades
+const duplicate = adoptedPets.some(pet =>
+    pet.name === petData.name &&
+    pet.description === petData.description &&
+    pet.type === petData.type &&
+    pet.age === petData.age
+);
 
-    if (duplicate) {
-        alert(`O pet ${petName} já foi adicionado com essas mesmas informações.`);
-        return; // Impede a adição do pet
-    }
+if (duplicate) {
+    alert(`O pet ${petName} já foi adicionado com essas mesmas informações.`);
+    return; // Impede a adição do pet
+}
 
-    // Adiciona o novo pet à lista
-    adoptedPets.push(petData);
+// Adiciona o novo pet à lista
+adoptedPets.push(petData);
 
-    // Salva a lista atualizada no localStorage
-    localStorage.setItem('adoptedPets', JSON.stringify(adoptedPets));
+// Salva a lista atualizada no localStorage
+localStorage.setItem('adoptedPets', JSON.stringify(adoptedPets));
 
-    // Exibe uma mensagem de sucesso
-    alert(`Conclua a adoção de ${petName} na página de "Suas Adoções"!`);
+// Exibe uma mensagem de sucesso
+alert(`Conclua a adoção de ${petName} na página de "Suas Adoções"!`);
+
+// Redireciona para a página de adoções
+window.location.href = "file:///C:/Users/Leonardo%20Santos/Documents/MeusProjetos/Petshop/adocoes.html";
 }
 
 // Função para gerar um ID único para cada pet
